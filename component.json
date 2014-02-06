@@ -1,0 +1,13 @@
+{
+    "name": "jquery class builder",
+    "version": "1.0",
+    "description": "JQuery Class Builder with Namespace Integration",
+    "keywords": [
+        "jquery class",
+        "namespace"
+    ],
+    "scripts": [
+        "jquery-class/jquery.class.js"
+    ],
+    "license": "MIT"
+}

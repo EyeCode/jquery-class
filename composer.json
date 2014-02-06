@@ -1,0 +1,30 @@
+{
+    "name": "eyecode/jquery-class",
+    "description": "JQuery Class Builder",
+    "type": "component",
+    "homepage": "https://github.com/EyeCode/jquery-class",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/EyeCode/jquery-class/issues",
+        "source": "https://github.com/EyeCode/jquery-class"
+    },
+    "authors": [
+        {
+            "name": "Alexandre Dionne",
+            "email": "programmeur@adionne.com"
+        }
+    ],
+    "require": {
+        "robloach/component-installer": "*"
+    },
+    "extra": {
+        "component": {
+            "scripts": [
+                "jquery-class/jquery.class.js"
+            ],
+            "files": [
+                "jquery-class/*"
+            ]
+        }
+    }
+}
