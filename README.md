@@ -11,7 +11,7 @@ Exemple:
         var foo = new $.Class({
                 namespace: "Foo",
 
-                const: {
+                consts: {
                     someConstant: "constant"
                 },
 
@@ -33,5 +33,5 @@ Doing thing like this, you building an App containing foo and bar where bar is i
 To access bar from foo you simply do <code>this.Bar.anyFunctionOrVar()</code> or <code>Foo.Bar.anyFunctionOrVar()</code><br>
 To access foo from bar you simply do <code>Foo.anyFunctionOrVar()</code>
 
-const used as a constant is simply a getter. If used like the exemple above, this give something like <code>Foo.someConstant() // >> return "constant"</code>
+consts are used as a constant holder where sub variable are simply a getter. If used like the exemple above, this give something like <code>Foo.someConstant() // >> return "constant"</code>
 
