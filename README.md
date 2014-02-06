@@ -6,7 +6,7 @@ Perequisite:
 
 * jQuery
 
-Exemple
+Exemple:
 
         var foo = new $.Class({
                 namespace: "Foo",
@@ -25,4 +25,9 @@ Exemple
             }),
             App = new $.Class(foo, bar),
             runApp = new App();
+            
+Doing thing like this, you building an App containing foo and bar where bar is in foo!
+
+To access bar from foo you simply do <code>this.Bar...</code> or <code>Foo.Bar...</code
+To access foo from bar you simply do <code>Foo...</code>
 
