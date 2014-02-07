@@ -42,8 +42,11 @@ $.Class = function(parent) {
     Class.prototype.constructor = Class;
 
     if (definition.consts && typeof definition.consts === 'object')
-        for (var constant in definition.consts)
-            Class.prototype[constant] = function() { return definition.consts[constant] }(constant);
+        for (var constant in definition.consts) {
+            Class.prototype[constant] = $.proxy(
+                function(def, cons) { return def[cons]}, this, definition.consts, constant
+            );
+        }
 
     return Class;
 };
