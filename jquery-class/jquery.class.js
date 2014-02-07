@@ -43,7 +43,7 @@ $.Class = function(parent) {
 
     if (definition.consts && typeof definition.consts === 'object')
         for (var constant in definition.consts)
-            Class.prototype[constant] = function() { return definition.consts[constant] };
+            Class.prototype[constant] = function() { return definition.consts[constant] }(constant);
 
     return Class;
 };
