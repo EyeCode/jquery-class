@@ -40,7 +40,13 @@ or
 Foo.Bar.anyFunctionOrVar()
 ```
 
-To access foo from bar you simply do <code>Foo.anyFunctionOrVar()</code>
+To access foo from bar you simply do 
+```javascript 
+Foo.anyFunctionOrVar()
+```
 
-consts are used as a constant holder where sub variable are simply a getter. If used like the exemple above, this give something like <code>Foo.someConstant() // >> return "constant"</code>
+consts are used as a constant holder where sub variable are simply a getter. If used like the exemple above, this give something like 
+```javascript
+Foo.someConstant() // >> return "constant"
+```
 
