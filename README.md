@@ -7,25 +7,26 @@ Perequisite:
 * jQuery
 
 Exemple:
+```javascript
+var foo = new $.Class({
+        namespace: "Foo",
 
-        var foo = new $.Class({
-                namespace: "Foo",
+        consts: {
+            someConstant: "constant"
+        },
 
-                consts: {
-                    someConstant: "constant"
-                },
+        someFunction: function: () {
+            // some code..
+        }
+    }),
+    bar = new $.Class({
+        namespace: "Foo.Bar"
+        // ...
+    }),
+    App = new $.Class(foo, bar),
+    runApp = new App();
+```
 
-                someFunction: function: () {
-                    // some code..
-                }
-            }),
-            bar = new $.Class({
-                namespace: "Foo.Bar"
-                ...
-            }),
-            App = new $.Class(foo, bar),
-            runApp = new App();
-            
 foo and bar are initially individual plugin, combining it in App this is where the fun start..
             
 Doing thing like this, you building an App containing foo and bar where bar is in foo!
