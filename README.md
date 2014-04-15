@@ -1,4 +1,4 @@
-#Jquery Class
+#jQuery Class
 
 Simple and easy jquery class builder with namespacing
 
