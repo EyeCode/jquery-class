@@ -262,6 +262,12 @@ samp {
   font-size: 1em;
 }
 
+pre em {
+  color:#555;
+  font-size:0.85em;
+  font-style: normal
+}
+
 /*
  * 1. Addresses CSS quotes not supported in IE6/7
  * 2. Addresses quote property not supported in S4
@@ -390,7 +396,7 @@ fieldset {
 
 /*
  * 1. Corrects color not being inherited in IE6/7/8/9
- * 2. Corrects text not wrapping in FF3 
+ * 2. Corrects text not wrapping in FF3
  * 3. Corrects alignment displayed oddly in IE6/7
  */
 legend {
@@ -580,7 +586,7 @@ h3 {
 }
 
 a {
-  color: #ffcc00;
+  color: #4D90CE;
   font-weight: 400;
   text-decoration: none;
 }
@@ -712,7 +718,6 @@ dt {
   max-width: 650px;
   margin: 0 auto;
   padding: 0 10px;
-  background: blue;
   margin: 6px auto;
 }
 #header nav li {
@@ -727,13 +732,13 @@ dt {
 }
 #header nav li a {
   color: white;
-  border: 1px solid #5d910b;
+  border: 1px solid #10549E;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #93bd20), color-stop(100%, #659e10));
-  background: -webkit-linear-gradient(#93bd20, #659e10);
-  background: -moz-linear-gradient(#93bd20, #659e10);
-  background: -o-linear-gradient(#93bd20, #659e10);
-  background: -ms-linear-gradient(#93bd20, #659e10);
-  background: linear-gradient(#93bd20, #659e10);
+  background: -webkit-linear-gradient(#208BBD, #10549E);
+  background: -moz-linear-gradient(#208BBD, #10549E);
+  background: -o-linear-gradient(#208BBD, #10549E);
+  background: -ms-linear-gradient(#208BBD, #10549E);
+  background: linear-gradient(#208BBD, #10549E);
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   -o-border-radius: 2px;
@@ -744,7 +749,7 @@ dt {
   -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0px 3px 7px rgba(0, 0, 0, 0.7);
   -o-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0px 3px 7px rgba(0, 0, 0, 0.7);
   box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0px 3px 7px rgba(0, 0, 0, 0.7);
-  background-color: #93bd20;
+  background-color: #208BBD;
   padding: 10px 12px;
   margin-top: 6px;
   line-height: 14px;
@@ -754,13 +759,13 @@ dt {
 }
 #header nav li a:hover {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #749619), color-stop(100%, #527f0e));
-  background: -webkit-linear-gradient(#749619, #527f0e);
-  background: -moz-linear-gradient(#749619, #527f0e);
-  background: -o-linear-gradient(#749619, #527f0e);
-  background: -ms-linear-gradient(#749619, #527f0e);
-  background: linear-gradient(#749619, #527f0e);
-  background-color: #659e10;
-  border: 1px solid #527f0e;
+  background: -webkit-linear-gradient(#196996, #0E407F);
+  background: -moz-linear-gradient(#196996, #0E407F);
+  background: -o-linear-gradient(#196996, #0E407F);
+  background: -ms-linear-gradient(#196996, #0E407F);
+  background: linear-gradient(#196996, #0E407F);
+  background-color: #196996;
+  border: 1px solid #0E407F;
   -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0);
   -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0);
   -o-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0);
@@ -770,6 +775,11 @@ dt {
   float: left;
   margin-left: 0px;
 }
+#header nav li.eyecode {
+  position: absolute;
+  margin: 30px 0 0 154px;
+}
+
 #header nav li.downloads {
   float: right;
   margin-left: 6px;
@@ -786,7 +796,7 @@ section {
   margin: 20px 0;
   margin-top: 70px;
 }
-section #title {
+section #title, section #foot {
   border: 0;
   outline: none;
   margin: 0 0 50px 0;
@@ -806,7 +816,7 @@ section #title p {
   font-size: 18px;
   text-align: center;
 }
-section #title .credits {
+section #title .credits, section #foot .credits {
   font-size: 11px;
   font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
@@ -816,22 +826,22 @@ section #title .credits {
 section #title .credits.left {
   float: left;
 }
-section #title .credits.right {
+section #foot .credits.right {
   float: right;
 }
 
 @media print, screen and (max-width: 720px) {
-  #title .credits {
+  #foot .credits {
     display: block;
     width: 100%;
     line-height: 30px;
     text-align: center;
   }
-  #title .credits .left {
+  #foot .credits .left {
     float: none;
     display: block;
   }
-  #title .credits .right {
+  #foot .credits .right {
     float: none;
     display: block;
   }
