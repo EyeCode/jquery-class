@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Jquery-class by EyeCode</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/EyeCode/jquery-class">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/EyeCode/jquery-class/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/EyeCode/jquery-class/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Jquery-class</h1>
+          <p>simple jquery class creation with namespacing</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/EyeCode">EyeCode</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="jquery-class" class="anchor" href="#jquery-class"><span class="octicon octicon-link"></span></a>jQuery Class</h1>
+
+<p>Simple and easy jquery class builder with namespacing</p>
+
+<p>Perequisite:</p>
+
+<ul>
+<li>jQuery</li>
+</ul><p>Exemple:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Class</span><span class="p">({</span>
+        <span class="nx">namespace</span><span class="o">:</span> <span class="s2">"Foo"</span><span class="p">,</span>
+
+        <span class="nx">consts</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">someConstant</span><span class="o">:</span> <span class="s2">"constant"</span>
+        <span class="p">},</span>
+
+        <span class="nx">someFunction</span><span class="o">:</span> <span class="kd">function</span><span class="o">:</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// some code..</span>
+        <span class="p">}</span>
+    <span class="p">}),</span>
+    <span class="nx">bar</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Class</span><span class="p">({</span>
+        <span class="nx">namespace</span><span class="o">:</span> <span class="s2">"Foo.Bar"</span>
+        <span class="c1">// ...</span>
+    <span class="p">}),</span>
+    <span class="nx">App</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Class</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">),</span>
+    <span class="nx">runApp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">App</span><span class="p">();</span>
+</pre></div>
+
+<p>foo and bar are initially individual plugin, combining it in App this is where the fun start..</p>
+
+<p>Doing thing like this, you building an App containing foo and bar where bar is in foo!</p>
+
+<p>To access bar from foo you simply do </p>
+
+<div class="highlight highlight-javascript"><pre><span class="k">this</span><span class="p">.</span><span class="nx">Bar</span><span class="p">.</span><span class="nx">anyFunctionOrVar</span><span class="p">()</span> 
+</pre></div>
+
+<p>or </p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">Foo</span><span class="p">.</span><span class="nx">Bar</span><span class="p">.</span><span class="nx">anyFunctionOrVar</span><span class="p">()</span>
+</pre></div>
+
+<p>To access foo from bar you simply do </p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">Foo</span><span class="p">.</span><span class="nx">anyFunctionOrVar</span><span class="p">()</span>
+</pre></div>
+
+<p>consts are used as a constant holder where sub variable are simply a getter. If used like the exemple above, this give something like </p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">Foo</span><span class="p">.</span><span class="nx">someConstant</span><span class="p">()</span> <span class="c1">// &gt;&gt; return "constant"</span>
+</pre></div>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
