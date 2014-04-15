@@ -40,67 +40,70 @@
         </div>
 
         <h3>
-<a name="welcome-to-jquery-number-format-component" class="anchor" href="#welcome-to-jquery-number-format-component"><span class="octicon octicon-link"></span></a>Welcome to jQuery Class Component.</h3>
+          <a name="welcome-to-jquery-number-format-component" class="anchor" href="#welcome-to-jquery-number-format-component"><span class="octicon octicon-link"></span></a>Welcome to jQuery Class Component.
+        </h3>
 
-<p>Simple and easy jquery class builder with namespacing</p>
+        <p>Simple and easy jquery class builder with namespacing</p>
 
-<p>Perequisite:</p>
+        <p>Perequisite:</p>
 
-<ul>
-<li>jQuery</li>
-</ul><p>Exemple:</p>
+        <ul>
+        <li>jQuery</li>
+        </ul><p>Exemple:</p>
 
-<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Class</span><span class="p">({</span>
-        <span class="nx">namespace</span><span class="o">:</span> <span class="s2">"Foo"</span><span class="p">,</span>
+        <div class="highlight highlight-javascript">
+          <pre>
+            <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Class</span><span class="p">({</span>
+                <span class="nx">namespace</span><span class="o">:</span> <span class="s2">"Foo"</span><span class="p">,</span>
 
-        <span class="nx">consts</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">someConstant</span><span class="o">:</span> <span class="s2">"constant"</span>
-        <span class="p">},</span>
+                <span class="nx">consts</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">someConstant</span><span class="o">:</span> <span class="s2">"constant"</span>
+                <span class="p">},</span>
 
-        <span class="nx">someFunction</span><span class="o">:</span> <span class="kd">function</span><span class="o">:</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="c1">// some code..</span>
-        <span class="p">}</span>
-    <span class="p">}),</span>
-    <span class="nx">bar</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Class</span><span class="p">({</span>
-        <span class="nx">namespace</span><span class="o">:</span> <span class="s2">"Foo.Bar"</span>
-        <span class="c1">// ...</span>
-    <span class="p">}),</span>
-    <span class="nx">App</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Class</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">),</span>
-    <span class="nx">runApp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">App</span><span class="p">();</span>
-</pre></div>
+                <span class="nx">someFunction</span><span class="o">:</span> <span class="kd">function</span><span class="o">:</span> <span class="p">()</span> <span class="p">{</span>
+                    <span class="c1">// some code..</span>
+                <span class="p">}</span>
+            <span class="p">}),</span>
+            <span class="nx">bar</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Class</span><span class="p">({</span>
+                <span class="nx">namespace</span><span class="o">:</span> <span class="s2">"Foo.Bar"</span>
+                <span class="c1">// ...</span>
+            <span class="p">}),</span>
+            <span class="nx">App</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Class</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">),</span>
+            <span class="nx">runApp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">App</span><span class="p">();</span>
+          </pre>
+        </div>
 
-<p>foo and bar are initially individual plugin, combining it in App this is where the fun start..</p>
+        <p>foo and bar are initially individual plugin, combining it in App this is where the fun start..</p>
+        <p>Doing thing like this, you building an App containing foo and bar where bar is in foo!</p>
+        <p>To access bar from foo you simply do </p>
 
-<p>Doing thing like this, you building an App containing foo and bar where bar is in foo!</p>
+        <div class="highlight highlight-javascript">
+          <pre><span class="k">this</span><span class="p">.</span><span class="nx">Bar</span><span class="p">.</span><span class="nx">anyFunctionOrVar</span><span class="p">()</span></pre>
+        </div>
 
-<p>To access bar from foo you simply do </p>
+        <p>or </p>
 
-<div class="highlight highlight-javascript"><pre><span class="k">this</span><span class="p">.</span><span class="nx">Bar</span><span class="p">.</span><span class="nx">anyFunctionOrVar</span><span class="p">()</span>
-</pre></div>
+        <div class="highlight highlight-javascript">
+          <pre><span class="nx">Foo</span><span class="p">.</span><span class="nx">Bar</span><span class="p">.</span><span class="nx">anyFunctionOrVar</span><span class="p">()</span></pre>
+        </div>
 
-<p>or </p>
+        <p>To access foo from bar you simply do </p>
 
-<div class="highlight highlight-javascript"><pre><span class="nx">Foo</span><span class="p">.</span><span class="nx">Bar</span><span class="p">.</span><span class="nx">anyFunctionOrVar</span><span class="p">()</span>
-</pre></div>
+        <div class="highlight highlight-javascript">
+          <pre><span class="nx">Foo</span><span class="p">.</span><span class="nx">anyFunctionOrVar</span><span class="p">()</span></pre>
+        </div>
 
-<p>To access foo from bar you simply do </p>
+        <p>consts are used as a constant holder where sub variable are simply a getter. If used like the exemple above, this give something like </p>
 
-<div class="highlight highlight-javascript"><pre><span class="nx">Foo</span><span class="p">.</span><span class="nx">anyFunctionOrVar</span><span class="p">()</span>
-</pre></div>
+        <div class="highlight highlight-javascript">
+          <pre><span class="nx">Foo</span><span class="p">.</span><span class="nx">someConstant</span><span class="p">()</span> <span class="c1">// &gt;&gt; return "constant"</span></pre>
+        </div>
 
-<p>consts are used as a constant holder where sub variable are simply a getter. If used like the exemple above, this give something like </p>
+        <h3>
+          <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors
+        </h3>
 
-<div class="highlight highlight-javascript"><pre><span class="nx">Foo</span><span class="p">.</span><span class="nx">someConstant</span><span class="p">()</span> <span class="c1">// &gt;&gt; return "constant"</span>
-</pre></div>
-      </section>
-
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>2014 <a href="https://github.com/EyeCode" class="user-mention">EyeCode</a></p>
+        <p>2014 <a href="https://github.com/EyeCode" class="user-mention">EyeCode</a></p>
         <div id="foot">
           <hr>
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
@@ -109,16 +112,5 @@
 
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-
-      <script>
-        (function($) {
-            $('#exemple tbody tr').each(function() {
-                $(this).find('td.to').text(
-                    $.numberFormat($(this).find('td.from').text(), $(this).find('td.options').data())
-                );
-            });
-        })(jQuery);
-      </script>
-
   </body>
 </html>
