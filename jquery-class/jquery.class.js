@@ -1,38 +1,27 @@
 $.Class = function(definition) {
-    if (arguments.length !== 1 || typeof definition !== 'object')
-        throw new Error('Wrong Class definition provided');
+    var registerNameSpace = function(ns, ptr) {
+        var current = ns.shift();
+        if (typeof ptr[current] === 'undefined') { ptr[current] = {}; }
+        return ns.length > 0 ? registerNameSpace(ns, ptr[current]) : ptr;
+    }
 
     var Class = function() {
-        $.each(definition, function(key, value){
-            if (/^init/.test(key))
-                definition[key].apply(this, []);
-        });
+        for (var key in definition) {
+            if (/^init/.test(key) && typeof definition[key] === 'function') definition[key].apply(this, arguments);
+        }
     };
 
     Class.prototype = definition;
     Class.prototype.constructor = Class;
 
-    if (definition.consts && typeof definition.consts === 'object')
-        for (var constant in definition.consts) {
-            Class.prototype[constant] = $.proxy(
-                function(def, cons) { return def[cons]}, this, definition.consts, constant
-            );
-        }
-
-    if (typeof definition.namespace !== 'undefined') {
-        var routing    = window,
-            namespaces = definition.namespace.split('.'),
-            className  = namespaces.pop();
-
-        $.each(namespaces, function(idx, namespace) {
-            if (typeof routing[namespace] !== 'function') {
-                routing[namespace] = function(){};
-            }
-            routing = routing[namespace].prototype;
+    if (definition.consts && typeof definition.consts === 'object') {
+        $.each(definition.consts, function (constant, value) {
+            Class.prototype[constant] = $.proxy(function (cons) { return cons; }, this, value);
         });
-
-        routing[className] = Class;
     }
 
-    return Class;
+    var pointer = registerNameSpace(definition.namespace.split('.'), window);
+    $.extend(pointer[definition.namespace.split('.').pop()], definition);
+
+    return new Class();
 };
