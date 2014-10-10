@@ -1,52 +1,27 @@
-$.Class = function(parent) {
-    var classPointer = function (obj, namespace) {
-        return namespace.length > 1 ? classPointer(obj[namespace.shift()], namespace) : obj;
-    }, definition = {}, cls = function(){};
-
-    if (arguments.length == 1 && typeof parent == 'object')
-        definition = parent;
-
-    if (arguments.length > 2) {
-        for(var i = 0; i < arguments.length - 1; i++) {
-            if (typeof arguments[i].prototype.namespace == 'undefined')
-                throw new Error('Missing namespace plugin loaded at ' + i + 'position');
-
-            if (arguments[i].prototype.namespace == "root") {
-                $.extend(true, cls.prototype, arguments[i].prototype);
-            } else {
-                var pointer = classPointer(cls.prototype, arguments[i].prototype.namespace.split("."));
-                pointer[arguments[i].prototype.namespace.split(".").pop()] = arguments[i].prototype;
-                if (arguments[i].prototype.namespace.split(".").length == 1)
-                    window[arguments[i].prototype.namespace] = pointer[arguments[i].prototype.namespace];
-            }
-        }
-        parent = cls;
-    }
-
-    var _parent = {};
-
-    if (typeof parent === 'function') {
-        for (var key in parent.prototype) {
-            _parent[key] = parent.prototype[key];
-        }
-
-        parent = $.extend(parent, parent.prototype);
-        definition = $.extend(parent, definition);
+$.Class = function(definition) {
+    var registerNameSpace = function(ns, ptr) {
+        var current = ns.shift();
+        if (typeof ptr[current] === 'undefined') { ptr[current] = {}; }
+        return ns.length > 0 ? registerNameSpace(ns, ptr[current]) : ptr;
     }
 
     var Class = function() {
-        if (definition.initialize) definition.initialize.apply(this, arguments);
+        for (var key in definition) {
+            if (/^init/.test(key) && typeof definition[key] === 'function') definition[key].apply(this, arguments);
+        }
     };
 
     Class.prototype = definition;
     Class.prototype.constructor = Class;
 
-    if (definition.consts && typeof definition.consts === 'object')
-        for (var constant in definition.consts) {
-            Class.prototype[constant] = $.proxy(
-                function(def, cons) { return def[cons]}, this, definition.consts, constant
-            );
-        }
+    if (definition.consts && typeof definition.consts === 'object') {
+        $.each(definition.consts, function (constant, value) {
+            Class.prototype[constant] = $.proxy(function (cons) { return cons; }, this, value);
+        });
+    }
 
-    return Class;
+    var pointer = registerNameSpace(definition.namespace.split('.'), window);
+    $.extend(pointer[definition.namespace.split('.').pop()], definition);
+
+    return new Class();
 };
