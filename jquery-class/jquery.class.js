@@ -21,5 +21,7 @@ $.Class = function(definition) {
     }
 
     var pointer = registerNameSpace(definition.namespace.split('.'), window);
-    return $.extend(pointer[definition.namespace.split('.').pop()], new Class());
+    return $.extend(pointer[definition.namespace.split('.').pop()], definition);
+
+    return new Class();
 };
