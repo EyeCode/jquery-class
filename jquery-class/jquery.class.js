@@ -1,6 +1,6 @@
 /**
  * JQuery Class
- * version 2.0.3
+ * version 2.0.5
  */
 $.Class = function(definition) {
     var registerNameSpace = function(ns, ptr) {
@@ -25,6 +25,8 @@ $.Class = function(definition) {
     }
 
     var pointer = registerNameSpace(definition.namespace.split('.'), window);
+
     $.extend(pointer[definition.namespace.split('.').pop()], definition);
     return $.extend(pointer[definition.namespace.split('.').pop()], new Class());
 };
+
