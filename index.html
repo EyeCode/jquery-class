@@ -53,7 +53,8 @@
 
         <div class="highlight highlight-javascript">
           <pre>
-<span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Class</span><span class="p">({</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">Class</span><span class="p">({</span>
+    <span class="nx">required</span><span class="o">:</span> <span class="s2">["Foo.Bar"]</span><span class="p">,</span><span class="c1">// (array) optional..</span>
     <span class="nx">namespace</span><span class="o">:</span> <span class="s2">"Foo"</span><span class="p">,</span>
 
     <span class="nx">consts</span><span class="o">:</span> <span class="p">{</span>
@@ -64,7 +65,7 @@
         <span class="c1">// some code..</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Class</span><span class="p">({</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">Class</span><span class="p">({</span>
     <span class="nx">namespace</span><span class="o">:</span> <span class="s2">"Foo.Bar"</span>
     <span class="c1">// ...</span>
 <span class="p">});
@@ -73,6 +74,7 @@
 
         <p>foo and bar are initially individual plugin, combining it with namespace is where the fun start..</p>
         <p>Doing thing like this, you building an App containing foo and bar where bar is in foo!</p>
+        <p>And much more, you can provide required classes, that way, all namespace provided to the "required" params (as array) need to be loaded before initializing current plugin, that's provide a kind of loading priority where you don't have to bother with the way you are calling your source files</p>
         <p>To access bar from foo you simply do </p>
 
         <div class="highlight highlight-javascript">
