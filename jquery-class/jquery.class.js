@@ -22,7 +22,7 @@ $.Class = function(definition) {
                 events.push('required.' + definition.required[x]);
             }
             $(document).on(events.join(' '), {def: definition, args: arguments}, function(e) {
-                if ($.grep(window.loadedClass, function(x) {return $.inArray(events)}).length === events.length) {
+                if ($.grep(events, function(x) {return $.inArray(x, window.loadedClass)}).length === events.length) {
                     initialize(e.data.def, self, e.data.args);
                 }
             });
