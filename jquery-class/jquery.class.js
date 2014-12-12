@@ -1,32 +1,41 @@
 /**
  * JQuery Class
- * version 2.0.5
+ * version 2.0.6
  */
 $.Class = function(definition) {
     var registerNameSpace = function(ns, ptr) {
         var current = ns.shift();
-        if (typeof ptr[current] === 'undefined') { ptr[current] = {}; }
+        typeof ptr[current] === 'undefined' ? ptr[current] = {} : null;
         return ns.length > 0 ? registerNameSpace(ns, ptr[current]) : ptr;
-    }
-
-    var Class = function() {
-        for (var key in definition) {
-            if (/^init/.test(key) && typeof definition[key] === 'function') definition[key].apply(this, arguments);
+    }, Class = function() {
+        var initialize = function(def, self, args) {
+            pointer = registerNameSpace(def.namespace.split('.'), window);
+            $.extend(true, pointer[def.namespace.split('.').pop()], self);
+            for (var key in def) (/^init/.test(key) && typeof def[key] === 'function') ? def[key].apply(self, args) : null;
+            $.extend(true, pointer[def.namespace.split('.').pop()], self);
+            window.loadedClass ? window.loadedClass.push('required.' + def.namespace) : window.loadedClass = ['required.' + def.namespace];
+            $(document).trigger('required.' + def.namespace);
+        };
+        if (typeof definition.required === 'object') {
+            var self = this, events = [];
+            for(var x in definition.required) {
+                events.push('required.' + definition.required[x]);
+            }
+            $(document).on(events.join(' '), {def: definition, args: arguments}, function(e) {
+                if ($.grep(window.loadedClass, function(x) {return $.inArray(events)}).length === events.length) {
+                    initialize(e.data.def, self, e.data.args);
+                }
+            });
+        } else {
+            initialize(definition, this, arguments);
         }
     };
-
     Class.prototype = definition;
     Class.prototype.constructor = Class;
-
     if (definition.consts && typeof definition.consts === 'object') {
         $.each(definition.consts, function (constant, value) {
             Class.prototype[constant] = $.proxy(function (cons) { return cons; }, this, value);
         });
     }
-
-    var pointer = registerNameSpace(definition.namespace.split('.'), window);
-
-    $.extend(pointer[definition.namespace.split('.').pop()], definition);
-    return $.extend(pointer[definition.namespace.split('.').pop()], new Class());
+    new Class();
 };
-
