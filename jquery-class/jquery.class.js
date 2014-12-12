@@ -1,6 +1,6 @@
 /**
  * JQuery Class
- * version 2.0.6
+ * version 2.0.8
  */
 $.Class = function(definition) {
     var registerNameSpace = function(ns, ptr) {
