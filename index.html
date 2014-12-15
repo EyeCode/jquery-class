@@ -1,58 +1,57 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>jQuery-class by EyeCode</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <script src="javascripts/jquery-class.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <title>jQuery-class by EyeCode</title>
+        <link rel="stylesheet" href="stylesheets/styles.css">
+        <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="javascripts/respond.js"></script>
+        <script src="javascripts/jquery-class.js"></script>
+        <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" href="stylesheets/ie.css">
+        <![endif]-->
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-  </head>
-  <body>
-      <div id="header">
-        <nav>
-          <li class="eyecode"><img src="images/eyecode.png"/></li>
-          <li class="fork"><a href="https://github.com/EyeCode/jquery-class">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/EyeCode/jquery-class/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/EyeCode/jquery-class/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
+    </head>
+    <body>
+        <div id="header">
+            <nav>
+                <li class="eyecode"><img src="images/eyecode.png"/></li>
+                <li class="fork"><a href="https://github.com/EyeCode/jquery-class">View On GitHub</a></li>
+                <li class="downloads"><a href="https://github.com/EyeCode/jquery-class/zipball/master">ZIP</a></li>
+                <li class="downloads"><a href="https://github.com/EyeCode/jquery-class/tarball/master">TAR</a></li>
+                <li class="title">DOWNLOADS</li>
+            </nav>
+        </div><!-- end header -->
 
-    <div class="wrapper">
+        <div class="wrapper">
 
-      <section>
-        <div id="title">
-          <h1>jQuery-class</h1>
-          <p>jQuery Class</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/EyeCode">EyeCode</a></span>
-        </div>
+        <section>
+            <div id="title">
+                <h1>jQuery-class</h1>
+                <p>jQuery Class</p>
+                <hr>
+                <span class="credits left">Project maintained by <a href="https://github.com/EyeCode">EyeCode</a></span>
+            </div>
 
-        <h3>
-          <a name="welcome-to-jquery-number-format-component" class="anchor" href="#welcome-to-jquery-number-format-component"><span class="octicon octicon-link"></span></a>Welcome to jQuery Class Component.
-        </h3>
+            <h3>
+                <a name="welcome-to-jquery-number-format-component" class="anchor" href="#welcome-to-jquery-number-format-component"><span class="octicon octicon-link"></span></a>Welcome to jQuery Class Component.
+            </h3>
 
-        <p>Simple and easy jquery class builder with namespacing</p>
+            <p>Simple and easy jquery class builder with namespacing</p>
+            <p>Perequisite:</p>
+            <ul>
+                <li>jQuery</li>
+            </ul>
+            <p>Exemple:</p>
 
-        <p>Perequisite:</p>
-
-        <ul>
-        <li>jQuery</li>
-        </ul><p>Exemple:</p>
-
-        <div class="highlight highlight-javascript">
-          <pre>
+            <div class="highlight highlight-javascript">
+                <pre>
 <span class="nx">$</span><span class="p">.</span><span class="nx">Class</span><span class="p">({</span>
     <span class="nx">required</span><span class="o">:</span> <span class="o">[</span><span class="s2">"Foo.Bar"</span><span class="o">]</span><span class="p">,</span><span class="c1">// (array) optional..</span>
     <span class="nx">namespace</span><span class="o">:</span> <span class="s2">"Foo"</span><span class="p">,</span>
@@ -69,53 +68,55 @@
     <span class="nx">namespace</span><span class="o">:</span> <span class="s2">"Foo.Bar"</span>
     <span class="c1">// ...</span>
 <span class="p">});
-          </pre>
+                </pre>
+            </div>
+
+            <p>Foo and Bar are initially individual plugin, combining it with namespace is where the fun start..</p>
+            <p>Doing thing like this, you building an App containing foo and bar where bar is in foo!</p>
+            <p>And much more, you can provide required classes, that way, all namespace provided to the "required" params (as array) need to be loaded before initializing current plugin, that's provide a kind of loading priority where you don't have to bother with the way you are calling your source files</p>
+            <p>One more thing, functions declaration beginning with "init...", will automatically be called after the complete load of the class.</p>
+            <p>To access bar from foo you simply do </p>
+
+            <div class="highlight highlight-javascript">
+                <pre><span class="k">this</span><span class="p">.</span><span class="nx">Bar</span><span class="p">.</span><span class="nx">anyFunctionOrVar</span><span class="p">()</span></pre>
+            </div>
+
+            <p>or </p>
+
+            <div class="highlight highlight-javascript">
+                <pre><span class="nx">Foo</span><span class="p">.</span><span class="nx">Bar</span><span class="p">.</span><span class="nx">anyFunctionOrVar</span><span class="p">()</span></pre>
+            </div>
+
+            <p>To access foo from bar you simply do </p>
+
+            <div class="highlight highlight-javascript">
+                <pre><span class="nx">Foo</span><span class="p">.</span><span class="nx">anyFunctionOrVar</span><span class="p">()</span></pre>
+            </div>
+
+            <p>consts are used as a constant holder where sub variable are simply a getter. If used like the exemple above, this give something like </p>
+
+            <div class="highlight highlight-javascript">
+                <pre><span class="nx">Foo</span><span class="p">.</span><span class="nx">someConstant</span><span class="p">()</span> <span class="c1">// &gt;&gt; return "constant"</span></pre>
+            </div>
+            <p># Todo :</p>
+
+            <ul>
+                <li>Parent directly callable from child without passing through namespacing</li>
+                <li>Adding privates vars and functions...</li>
+                <li>Extends and abstracts</li>
+            </ul>
+            <h3>
+                <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors
+            </h3>
+
+            <p>2014 <a href="https://github.com/EyeCode" class="user-mention">EyeCode</a></p>
+            <div id="foot">
+                <hr>
+                <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+            </div>
+        </section>
+
         </div>
-
-        <p>foo and bar are initially individual plugin, combining it with namespace is where the fun start..</p>
-        <p>Doing thing like this, you building an App containing foo and bar where bar is in foo!</p>
-        <p>And much more, you can provide required classes, that way, all namespace provided to the "required" params (as array) need to be loaded before initializing current plugin, that's provide a kind of loading priority where you don't have to bother with the way you are calling your source files</p>
-        <p>To access bar from foo you simply do </p>
-
-        <div class="highlight highlight-javascript">
-          <pre><span class="k">this</span><span class="p">.</span><span class="nx">Bar</span><span class="p">.</span><span class="nx">anyFunctionOrVar</span><span class="p">()</span></pre>
-        </div>
-
-        <p>or </p>
-
-        <div class="highlight highlight-javascript">
-          <pre><span class="nx">Foo</span><span class="p">.</span><span class="nx">Bar</span><span class="p">.</span><span class="nx">anyFunctionOrVar</span><span class="p">()</span></pre>
-        </div>
-
-        <p>To access foo from bar you simply do </p>
-
-        <div class="highlight highlight-javascript">
-          <pre><span class="nx">Foo</span><span class="p">.</span><span class="nx">anyFunctionOrVar</span><span class="p">()</span></pre>
-        </div>
-
-        <p>consts are used as a constant holder where sub variable are simply a getter. If used like the exemple above, this give something like </p>
-
-        <div class="highlight highlight-javascript">
-          <pre><span class="nx">Foo</span><span class="p">.</span><span class="nx">someConstant</span><span class="p">()</span> <span class="c1">// &gt;&gt; return "constant"</span></pre>
-        </div>
-        <p># Todo :</p>
-
-        <ul>
-        <li>Parent directly callable from child without passing through namespacing</li>
-        <li>Adding privates vars and functions...</li>
-        </ul
-        <h3>
-          <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors
-        </h3>
-
-        <p>2014 <a href="https://github.com/EyeCode" class="user-mention">EyeCode</a></p>
-        <div id="foot">
-          <hr>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
-      </section>
-
-    </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-  </body>
+    </body>
 </html>
