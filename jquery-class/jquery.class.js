@@ -1,6 +1,6 @@
 /**
  * JQuery Class
- * version 2.0.8
+ * version 2.0.9
  */
 $.Class = function(definition) {
     var registerNameSpace = function(ns, ptr) {
@@ -16,6 +16,7 @@ $.Class = function(definition) {
             window.loadedClass ? window.loadedClass.push('required.' + def.namespace) : window.loadedClass = ['required.' + def.namespace];
             $(document).trigger('required.' + def.namespace);
         };
+        definition.getType = function() { return 'Class'};
         if (typeof definition.required === 'object') {
             var self = this, events = [];
             for(var x in definition.required) {

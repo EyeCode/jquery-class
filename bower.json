@@ -1,6 +1,6 @@
 {
   "name": "jquery-class-ns",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "homepage": "http://eyecode.github.io/jquery-class/",
   "description": "JQuery Class Builder with Namespace Integration",
   "main": ["./jquery-class/jquery.class.js","./jquery-class/jquery.class.min.js"],
