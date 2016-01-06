@@ -48,7 +48,7 @@
             <ul>
                 <li>jQuery</li>
             </ul>
-            <p>Exemple:</p>
+            <p>Basic Exemple:</p>
 
             <div class="highlight highlight-javascript">
                 <pre>
@@ -98,6 +98,35 @@
             <div class="highlight highlight-javascript">
                 <pre><span class="nx">Foo</span><span class="p">.</span><span class="nx">someConstant</span><span class="p">()</span> <span class="c1">// &gt;&gt; return "constant"</span></pre>
             </div>
+
+            <p>Inheritance Exemple:</p>
+
+            <div class="highlight highlight-javascript">
+                <pre>
+<span class="nx">$</span><span class="p">.</span><span class="nx">Class</span><span class="p">({</span>
+    <span class="nx">namespace</span><span class="o">:</span> <span class="s2">"Foo"</span><span class="p">,</span>
+
+    <span class="nx">consts</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">someConstant</span><span class="o">:</span> <span class="s2">"constant"</span>
+    <span class="p">},</span>
+
+    <span class="nx">someFunction</span><span class="o">:</span> <span class="kd">function</span><span class="o">:</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// some code..</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">Class</span><span class="p">([</span><span class="s2">Foo</span><span class="o">], {</span>
+    <span class="nx">namespace</span><span class="o">:</span> <span class="s2">"Bar"</span>
+    <span class="c1">// ...</span>
+<span class="p">});
+                </pre>
+            </div>
+
+            <p>Now bar inherit from foo and have same properties/functions, so you can use it like this:</p>
+            <div class="highlight highlight-javascript">
+                <pre><span class="nx">Bar</span><span class="p">.</span><span class="nx">someConstant</span><span class="p">()</span> <span class="c1">// &gt;&gt; return "constant"</span></pre>
+            </div>
+
             <p># Todo :</p>
 
             <ul>
@@ -109,7 +138,7 @@
                 <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors
             </h3>
 
-            <p>2014 <a href="https://github.com/EyeCode" class="user-mention">EyeCode</a></p>
+            <p>2016 <a href="https://github.com/EyeCode" class="user-mention">EyeCode</a></p>
             <div id="foot">
                 <hr>
                 <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
