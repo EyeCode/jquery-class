@@ -14,29 +14,6 @@ Perequisite:
 
 ## How To Use
 
-1) Include `jquery-class.js` in the page (or use the minified version)
-
-2) Now just implement your custom classes: (inheritance is optionnal)
-
-```javascript
-$.Class([inheritance], {
-    required: ["Foo.Bar"],// (array) optional..
-    namespace: "Foo",
-
-    consts: {
-        someConstant: "constant"
-    },
-
-    someFunction: function: () {
-        // some code..
-    }
-});
-$.Class({
-    namespace: "Foo.Bar"
-    // ...
-});
-```
-
 Complete Doc : http://eyecode.github.io/jquery-class/
 
 
