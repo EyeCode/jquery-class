@@ -16,10 +16,10 @@ Perequisite:
 
 1) Include `jquery-class.js` in the page (or use the minified version)
 
-2) Now just implement your custom classes:
+2) Now just implement your custom classes: (inheritance is optionnal)
 
 ```javascript
-$.Class({
+$.Class([inheritance], {
     required: ["Foo.Bar"],// (array) optional..
     namespace: "Foo",
 
