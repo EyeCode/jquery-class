@@ -31,7 +31,6 @@ $.Class = function(inherits, core) {
                         }
                     }
 
-                    //console.log(pointer, def.namespace);
                     // add current class to the loadedClass stack for futur class where required is needed
                     if (window.loadedClass) {
                         window.loadedClass.push('required_' + def.namespace.replace(/\./, "_"));
@@ -69,11 +68,10 @@ $.Class = function(inherits, core) {
                 for (var x in definition.required) {
                     events.push('required_' + definition.required[x].replace(/\./, "_"));
                 }
-                console.log(events);
+
                 // initialize listener on generated events
                 $(document).on(events.join(' '), {def: definition, args: arguments}, function(e) {
                     // when events triggered, if required Class are loaded go for initialize
-                    console.log(e)
                     if ($.grep(events, function(x) { return $.inArray(x, window.loadedClass)}).length === events.length) {
                         initialize(e.data.def, self, e.data.args);
                     }
