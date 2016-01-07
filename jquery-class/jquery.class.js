@@ -2,45 +2,113 @@
  * JQuery Class
  * version 2.0.10
  */
-$.Class = function(inheritance, core) {
-    var definition = core || inheritance,
+$.Class = function(inherits, core) {
+    var definition = core || inherits,
+        /** registering namespace **/
         registerNameSpace = function(ns, ptr) {
             var current = ns.shift();
-            typeof ptr[current] === 'undefined' ? ptr[current] = {} : null;
+
+            if (typeof ptr[current] === 'undefined') {
+                ptr[current] = {} ;
+            }
+
             return ns.length > 0 ? registerNameSpace(ns, ptr[current]) : ptr;
-        }, Class = function() {
-            var initialize = function(def, self, args) {
-                pointer = registerNameSpace(def.namespace.split('.'), window);
-                $.extend(true, pointer[def.namespace.split('.').pop()], self);
-                for (var key in def) (/^init/.test(key) && typeof def[key] === 'function') ? def[key].apply(self, args) : null;
-                $.extend(true, pointer[def.namespace.split('.').pop()], self);
-                window.loadedClass ? window.loadedClass.push('required.' + def.namespace) : window.loadedClass = ['required.' + def.namespace];
-                $(document).trigger('required.' + def.namespace);
+        },
+        /** building Class object **/
+        Class = function() {
+            // initializing Class
+            var instances = definition.instances,
+                initialize = function(def, self, args) {
+                    // start with registering namespace in window
+                    pointer = registerNameSpace(def.namespace.split('.'), window);
+                    $.extend(true, pointer[def.namespace.split('.').pop()], self);
+
+                    // call any "init*" function at the load of the class
+                    for (var key in def) {
+                        if (/^init/.test(key) && typeof def[key] === 'function') {
+                            def[key].apply(self, args);
+                        }
+                    }
+
+                    $.extend(true, pointer[def.namespace.split('.').pop()], self);
+
+                    // add current class to the loadedClass stack for futur class where required is needed
+                    if (window.loadedClass) {
+                        window.loadedClass.push('required.' + def.namespace);
+                    } else {
+                        window.loadedClass = ['required.' + def.namespace];
+                    }
+
+                    // trigger the loaded class event for class already waiting for it
+                    $(document).trigger('required.' + def.namespace);
+                };
+
+            // define function type to return the type Class
+            this.getType = function() {
+                return 'Class';
             };
-            this.getType = function() { return 'Class'};
-            this.getDefinition = function() { return definition };
+
+            // define function to return the origin (json) class config
+            this.getDefinition = function() {
+                return definition
+            };
+
+            this.instanceOf = function (instance) {
+                instance = typeof instance === 'function' ? instance.name : instance;
+                instance = typeof instance === 'object' ? 'object': instance;
+                return $.inArray(instance.toString().toLowerCase(), instances) > -1;
+            }
+
+            // if current Class depends (required) on other class
             if (typeof definition.required === 'object') {
-                var self = this, events = [];
-                for(var x in definition.required) {
+                var self = this,
+                    events = [];
+
+                // generate events to listen
+                for (var x in definition.required) {
                     events.push('required.' + definition.required[x]);
                 }
+
+                // initialize listener on generated events
                 $(document).on(events.join(' '), {def: definition, args: arguments}, function(e) {
-                    if ($.grep(events, function(x) {return $.inArray(x, window.loadedClass)}).length === events.length) {
+                    // when events triggered, if required Class are loaded go for initialize
+                    if ($.grep(events, function(x) { return $.inArray(x, window.loadedClass)}).length === events.length) {
                         initialize(e.data.def, self, e.data.args);
                     }
                 });
             } else {
+                // initialize the current class
                 initialize(definition, this, arguments);
             }
         };
-    if (core === definition && typeof inheritance === 'object') $.each(inheritance, function() { definition = $.extend({}, this.getDefinition(), definition) });
 
+    // define current default instances
+    definition.instances = ['object', 'class', definition.namespace.toLowerCase()];
+
+    // current Class inherits from those sent
+    if (core === definition && typeof inherits === 'object') {
+
+        $.each(inherits, function() {
+            definition = $.extend({}, this.getDefinition(), definition);
+            definition.instances.push(this.getDefinition().namespace.toLowerCase());
+        });
+
+    }
+
+    // base Class definition
     Class.prototype = $.extend(true, {}, definition);
     Class.prototype.constructor = Class;
+
+    // turn instances as private value
+    delete Class.prototype.instances;
+
+    // constant definition
     if (definition.consts && typeof definition.consts === 'object') {
         $.each(definition.consts, function (constant, value) {
             Class.prototype[constant] = $.proxy(function (cons) { return cons; }, this, value);
         });
     }
+
+    // instantiation of the Class object
     new Class();
 };
