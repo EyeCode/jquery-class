@@ -26,12 +26,11 @@ $.Class = function(inherits, core) {
                     // call any "init*" function at the load of the class
                     for (var key in def) {
                         if (/^init/.test(key) && typeof def[key] === 'function') {
-                            def[key].apply(self, args);
+                            pointer[def.namespace.split('.').pop()][key].apply(pointer[def.namespace.split('.').pop()], args);
                         }
                     }
 
-                    $.extend(true, pointer[def.namespace.split('.').pop()], self);
-
+                    //console.log(pointer, def.namespace);
                     // add current class to the loadedClass stack for futur class where required is needed
                     if (window.loadedClass) {
                         window.loadedClass.push('required.' + def.namespace);
