@@ -3,6 +3,7 @@
  * version 2.0.10
  */
 $.Class = function(inherits, core) {
+
     var definition = core || inherits,
         /** registering namespace **/
         registerNameSpace = function(ns, ptr) {
@@ -33,13 +34,13 @@ $.Class = function(inherits, core) {
                     //console.log(pointer, def.namespace);
                     // add current class to the loadedClass stack for futur class where required is needed
                     if (window.loadedClass) {
-                        window.loadedClass.push('required.' + def.namespace);
+                        window.loadedClass.push('required_' + def.namespace.replace(/\./, "_"));
                     } else {
-                        window.loadedClass = ['required.' + def.namespace];
+                        window.loadedClass = ['required_' + def.namespace.replace(/\./, "_")];
                     }
 
                     // trigger the loaded class event for class already waiting for it
-                    $(document).trigger('required.' + def.namespace);
+                    $(document).trigger('required_' + def.namespace.replace(/\./, "_"));
                 };
 
             // define function type to return the type Class
@@ -66,12 +67,13 @@ $.Class = function(inherits, core) {
 
                 // generate events to listen
                 for (var x in definition.required) {
-                    events.push('required.' + definition.required[x]);
+                    events.push('required_' + definition.required[x].replace(/\./, "_"));
                 }
-
+                console.log(events);
                 // initialize listener on generated events
                 $(document).on(events.join(' '), {def: definition, args: arguments}, function(e) {
                     // when events triggered, if required Class are loaded go for initialize
+                    console.log(e)
                     if ($.grep(events, function(x) { return $.inArray(x, window.loadedClass)}).length === events.length) {
                         initialize(e.data.def, self, e.data.args);
                     }
