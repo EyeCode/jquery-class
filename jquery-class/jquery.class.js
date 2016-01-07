@@ -53,6 +53,7 @@ $.Class = function(inherits, core) {
                 return definition
             };
 
+            //lookup for instance of
             this.instanceOf = function (instance) {
                 instance = typeof instance === 'function' ? instance.name : instance;
                 instance = typeof instance === 'object' ? 'object': instance;
@@ -87,12 +88,10 @@ $.Class = function(inherits, core) {
 
     // current Class inherits from those sent
     if (core === definition && typeof inherits === 'object') {
-
         $.each(inherits, function() {
             definition = $.extend({}, this.getDefinition(), definition);
             definition.instances.push(this.getDefinition().namespace.toLowerCase());
         });
-
     }
 
     // base Class definition
