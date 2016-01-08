@@ -88,7 +88,7 @@ $.Class = function(inherits, core) {
     // current Class inherits from those sent
     if (core === definition && typeof inherits === 'object') {
         $.each(inherits, function() {
-            definition = $.extend({}, this.getDefinition(), definition);
+            definition = $.extend(true, {}, this.getDefinition(), definition);
             definition.instances.push(this.getDefinition().namespace.toLowerCase());
         });
     }
